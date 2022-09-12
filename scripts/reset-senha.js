@@ -62,3 +62,9 @@ function voltar(){
     document.location.replace('./index.html')
 }
 
+function enter(event){
+    if(event.key == 'Enter'){
+        enviar()
+    }
+}
+

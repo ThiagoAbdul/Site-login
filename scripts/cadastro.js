@@ -1,23 +1,15 @@
-function getFormulario(){
-    return document.querySelector('#form-cadastro')
-}
-
-function getSenha(){
-    return document.querySelector("input#cad-senha").value
-}
-
-function getElementos(...elementos){
-    return elementos.map(elemento => document.querySelector(elemento))
-}
-
-function getValores(...elementos){
-    return elementos.map(elemento => document.querySelector(elemento).value)
+function cadastrar(){
+    if (validarSenha() && isSenhasIguais() && validarCampos()){
+        window.location.replace('./fakepage.js')
+    }
+    else {
+        exibirErro()
+    }
 }
 
 function colorirCriterio(criterio, regExp){
     const senha = getSenha()
     criterio.style.color = senha.match(regExp)? 'green':'red'
-
 }
 
 function verificarCriterios(){
@@ -51,15 +43,6 @@ function isSenhasIguais(){
     return senha === confSenha
 }
 
-
-function cadastrar(){
-    if (validarSenha() && isSenhasIguais() && validarCampos()){
-        window.location.replace('./fakepage.js')
-    }
-    else {
-        exibirErro()
-    }
-}
 
 function criarMsgErro(){
     const msgErro = document.createElement('p')
@@ -105,4 +88,24 @@ function isInvalido(campo, regExp){
     return true
 }
 
+function getFormulario(){
+    return document.querySelector('#form-cadastro')
+}
 
+function getSenha(){
+    return document.querySelector("input#cad-senha").value
+}
+
+function getElementos(...elementos){
+    return elementos.map(elemento => document.querySelector(elemento))
+}
+
+function getValores(...elementos){
+    return elementos.map(elemento => document.querySelector(elemento).value)
+}
+
+function enter(event){
+    if(event.key === 'Enter'){
+        cadastrar()
+    }
+}

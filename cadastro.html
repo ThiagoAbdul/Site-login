@@ -55,7 +55,7 @@
                 </div>
                 <div class="campos">
                     <label for="conf-senha">Confirme sua senha: </label>
-                    <input type="password" name="conf-senha" id="conf-senha" required minlength="8">
+                    <input type="password" name="conf-senha" id="conf-senha" onkeydown="enter(event)" required minlength="8">
                 </div>
                 <div class="container-btn">
                     <input type="button" onclick="cadastrar()" name="login-button" value="Cadastrar"></input>
