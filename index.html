@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <h1>LOGIN</h1>
+    </header>
+    <main>
+        <form action="fakepage.js" autocomplete="on">
+            <div class="campos">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" class="campos" required placeholder="exemplo@email.com" autocomplete="email">
+            </div>
+            <div class="campos">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" class="campos" minlength="8" placeholder="********" autocomplete="current-password" required>
+            </div>
+            
+            <p><a href="./reset-senha.html">Esqueci minha senha</a></p>
+            <div class="container-btn">
+                <input type="submit" name="login-button" value="Entrar"></input>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>Ainda não possui uma conta? <a href="cadastro.html">Cadastra-se</a></p>
+    </footer>
+</body>
+</html>
