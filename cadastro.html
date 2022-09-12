@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastra-se</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastra-se</h1>
+    </header>
+    <main>
+        <form id="form-cadastro">
+            <fieldset>
+                <div class="campos">
+                    <label for="nome">Nome completo: </label>
+                    <input type="text" name="nome" id="nome" required minlength="10" maxlength="40" placeholder="Thiago Abdul Pereira Guedes">
+                </div>
+                <div class="campos">
+                    <label for="sexo">Sexo: </label>
+                </div>
+                <div class="sexo">
+                    <input type="radio" name="sexo" id="M">
+                    <label for="M">Masculino</label>
+                    <input type="radio" name="sexo" id="F" checked required>
+                    <label for="F">Feminino</label>
+                </div>
+                <div class="campos">
+                    <label for="data-nascimento">Data de nascimento: </label>
+                    <input type="date" name="data-nascimento" id="data-nascimento" required autocomplete="bday-day">
+                </div>
+                <div class="campos">
+                    <label for="celular">Celular: </label>
+                    <input type="tel" name="celular" id="celular" autocomplete="tel" placeholder="(99)999999999">
+                </div>
+                
+                <div class="campos">
+                    <label for="cad-email">E-mail</label>
+                <input type="email" name="cad-email" id="cad-email" class="campos" required placeholder="exemplo@email.com" autocomplete="email">
+                </div>
+
+                <div class="campos">
+                    <label for="cad-senha">Senha: </label>
+                    <input type="password" name="cad-senha" id="cad-senha" required minlength="8"  onkeyup="verificarCriterios()">
+                    <div id="criterios-senha">
+                        <p id="vld-upper">Caracteres maiúsculos</p>
+                        <p id="vld-lower">Caracteres minúsculos</p>
+                        <p id="vld-numeric">Caracteres numéricos</p>
+                        <p id="vld-special">Caracteres especiais</p>
+                        <p id="vld-length">8 ou mais caracteres</p>
+                    </div>
+                </div>
+                <div class="campos">
+                    <label for="conf-senha">Confirme sua senha: </label>
+                    <input type="password" name="conf-senha" id="conf-senha" required minlength="8">
+                </div>
+                <div class="container-btn">
+                    <input type="button" onclick="cadastrar()" name="login-button" value="Cadastrar"></input>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <p>Já possui uma conta? <a href="./index.html">Entrar</a></p>
+    </footer>
+    <script src="scripts/cadastro.js"></script>
+</body>
+</html>
