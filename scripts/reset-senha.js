@@ -1,21 +1,23 @@
-function isEmailPreenchido(){
-    return getEmail().match(/.@./)? true: false
-}
-
 function enviar(){
-    if (isEmailPreenchido()){
+    if (isEmail()){
         refreshFormulario()
     }
     else {
-        exibirErro()
+        exibirErro(isCampoEmailPreenchido()? "E-mail inválido." : "Campo vazio.")
+    }
+}
+
+function enter(event){
+    if(event.key == 'Enter'){
+        enviar()
     }
 }
 
 function refreshFormulario(){
     const mensagemEnvio = criarMensagemEnvio()
+    const botaoVoltar = criarBotaoVoltar()
     limparFormulario()
-    getFormulario().appendChild(mensagemEnvio)
-    getFormulario().appendChild(criarBotaoVoltar())
+    adicionarNoFormulario(mensagemEnvio, botaoVoltar)
 }
 
 function criarMensagemEnvio(){
@@ -23,10 +25,6 @@ function criarMensagemEnvio(){
     mensagem.setAttribute('id', 'msg-reset')
     mensagem.innerHTML = `Reset de senha enviado para <em>${getEmail()}</em>`
     return mensagem
-}
-
-function limparFormulario(){
-    getFormulario().innerHTML = ''
 }
 
 function criarBotaoVoltar(){
@@ -37,17 +35,41 @@ function criarBotaoVoltar(){
     return btn
 }
 
-function criarMsgErro(){
+function limparFormulario(){
+    getFormulario().innerHTML = ''
+}
+
+function criarMsgErro(mensagem){
     const msgErro = document.createElement('p')
-    msgErro.innerHTML = "E-mail inválido."
+    msgErro.innerHTML = mensagem
     msgErro.setAttribute('id', 'msg-erro')
     return msgErro
 }
 
-function exibirErro(){
-    if(document.querySelector('#msg-erro') === null){
-        getFormulario().appendChild(criarMsgErro())
+function exibirErro(mensagem){
+    if(getMsgErro() === null){
+        const msgErro = criarMsgErro(mensagem)
+        adicionarNoFormulario(msgErro)
     }
+    else if (getMsgErro().innerHTML !== mensagem) {
+        getMsgErro().innerHTML = mensagem
+    }
+}
+
+function adicionarNoFormulario(...elementos){
+    elementos.forEach(elemento => {
+        getFormulario().appendChild(elemento)
+    })
+}
+
+// getters
+
+function isCampoEmailPreenchido(){
+    return getEmail() !== ""
+}
+
+function isEmail(){
+    return getEmail().match(/.@./)? true: false
 }
 
 function getFormulario(){
@@ -62,9 +84,6 @@ function voltar(){
     document.location.replace('./index.html')
 }
 
-function enter(event){
-    if(event.key == 'Enter'){
-        enviar()
-    }
+function getMsgErro(){
+    return document.querySelector('#msg-erro')
 }
-
